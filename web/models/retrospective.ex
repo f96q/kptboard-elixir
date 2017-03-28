@@ -4,6 +4,8 @@ defmodule Kptboard.Retrospective do
   schema "retrospectives" do
     field :title, :string
 
+    has_many :labels, Kptboard.Label, on_delete: :delete_all
+
     timestamps()
   end
 

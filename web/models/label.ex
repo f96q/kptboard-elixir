@@ -8,6 +8,9 @@ defmodule Kptboard.Label do
     field :retrospective_id, :integer
     field :user_id, :integer
 
+    has_one :retrospective, Kptboard.Retrospective
+    has_one :user, Kptboard.User
+
     timestamps()
   end
 
