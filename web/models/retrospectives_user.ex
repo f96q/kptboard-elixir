@@ -2,8 +2,8 @@ defmodule Kptboard.RetrospectivesUser do
   use Kptboard.Web, :model
 
   schema "retrospectives_users" do
-    field :retrospective_id, :integer
-    field :user_id, :integer
+    belongs_to :retrospective, Kptboard.Retrospective
+    belongs_to :user, Kptboard.User
 
     timestamps()
   end

@@ -5,8 +5,9 @@ defmodule Kptboard.Label do
     field :type, :string
     field :description, :string
     field :position, :integer
-    field :retrospective_id, :integer
-    field :user_id, :integer
+
+    belongs_to :retrospective, Kptboard.Retrospective
+    belongs_to :user, Kptboard.User
 
     timestamps()
   end
@@ -17,6 +18,6 @@ defmodule Kptboard.Label do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:type, :description, :position, :retrospective_id, :user_id])
-    |> validate_required([:type, :description, :position, :retrospective_id, :user_id])
+    |> validate_required([:type, :description, :position, :retrospective_id])
   end
 end

@@ -3,6 +3,10 @@ defmodule Kptboard.User do
 
   schema "users" do
     field :name, :string
+
+    has_many :retrospectives_users, Kptboard.RetrospectivesUser, on_delete: :delete_all
+    has_many :retrospectives, through: [:retrospectives_users, :retrospective]
+
     timestamps()
   end
 
