@@ -1,9 +1,12 @@
 defmodule Kptboard.RetrospectiveChannel do
   use Kptboard.Web, :channel
+  alias Kptboard.Repo
+  alias Kptboard.Retrospective
 
   def join("retrospective:lobby", payload, socket) do
     if authorized?(payload) do
-      {:ok, socket}
+      retrospective = Repo.get(Retrospective, payload["id"]) |> Repo.preload(:labels)
+      {:ok, %{title: retrospective.title}, socket}
     else
       {:error, %{reason: "unauthorized"}}
     end
