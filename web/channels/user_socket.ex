@@ -3,6 +3,8 @@ defmodule Kptboard.UserSocket do
 
   ## Channels
   # channel "room:*", Kptboard.RoomChannel
+  channel "label:*", Kptboard.LabelChannel
+  channel "retrospective:*", Kptboard.RetrospectiveChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
