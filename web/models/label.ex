@@ -1,5 +1,6 @@
 defmodule Kptboard.Label do
   use Kptboard.Web, :model
+  import EctoOrdered
 
   schema "labels" do
     field :type, :string
@@ -18,6 +19,7 @@ defmodule Kptboard.Label do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:type, :description, :position, :retrospective_id, :user_id])
+    |> set_order(:position, :type, :retrospective_id)
     |> validate_required([:type, :description, :position, :retrospective_id])
   end
 end
